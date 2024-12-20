@@ -11,14 +11,22 @@ app.use(express.json());
 // gemini ai
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+app.post("/api/ask", async (req, res) => {
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const prompt = await req.body.prompt;
+
+    console.log(await req);
+
+    const result = await model.generateContent(prompt);
+    res.send(result.response);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 app.get("/api", async (req, res) => {
-  console.log(req.body);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-  const prompt = "in less than 50 words, tell me about node.js";
-
-  const result = await model.generateContent(prompt);
-  res.send(result.response.text());
+  res.send("hello from backend!");
 });
 
 app.listen(3000, () => {

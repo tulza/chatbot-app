@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --bg1: #625d74;
+    --bg2: #2b2738;
+    --foreground: #ffffff;
+    --content: #3b364c;
+    --secondary: #b799c1;
+    --button: #6e54b5;
+}
+
+html {
+    background: var(--bg1);
+    color: var(--foreground);
+}
+
+@font-face {
+    font-family: ClashDisplay;
+    src: url("assets/font/ClashDisplay-Regular.woff") format("woff");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: ClashDisplay;
+    src: url("assets/font/ClashDisplay-Medium.woff") format("woff");
+    font-weight: 500;
+}
